@@ -23,7 +23,7 @@ The casino consists of a roulette contract deployed in the Matic mainnet and an 
 
 SakuraCasino uses [Chainlink VRF](https://chain.link/solutions/chainlink-vrf), which is a verifiable random function for smart contracts provided by Chainlink's oracle network.
 
-![](https://assets-global.website-files.com/5f6b7190899f41fb70882d08/5f776f7ff71fc1084ddeaaca_vrf-infographic-chainlink.svg)
+![](assets/chainlink_vrf_graphic.svg)
 
 This is the first **probably-fair** roulette with truly random number gereration.
 
