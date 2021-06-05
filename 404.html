@@ -9,7 +9,7 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/static/sakura-icon.svg" rel="icon" />
+    <link href="/assets/sakura-icon.svg" rel="icon" />
     <link href="/resources/css/retype.css" rel="stylesheet" />
 
     <script type="text/javascript" src="/resources/js/config.js" defer></script>
@@ -30,8 +30,8 @@
             <div class="flex items-center px-2 md:px-6">
                 <span id="docs-site-logo" class="dark:text-white text-xl leading-snug font-semibold line-clamp-1 md:line-clamp-2">
                     <a href="/">
-                        <img class="dark:hidden" src="/static/logo.png">
-                        <img class="hidden dark:block" src="/static/logo-dark.png">
+                        <img class="dark:hidden" src="/assets/logo.png">
+                        <img class="hidden dark:block" src="/assets/logo-dark.png">
                     </a>
                 </span>
                 <span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
