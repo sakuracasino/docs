@@ -2,112 +2,63 @@
 label: About
 icon: info
 ---
-# Welcome to Sakura Casino
+# Welcome to SakuraCasino
 
-[Sakura Casino](https://sakura.casino) is a decentralized online casino based on the Polygon (Matic) network. The casino consists of a contract deployed in the Polygon block-chain and an UI that interacts with that contract.
+!!!warning
 
-
-![](static/retype-hero.svg)
-
-No coding is required and just one Markdown file, such as a [`README.md`](https://www.makeareadme.com/), will get you started.
-
-The [retype.com](https://retype.com/) website was generated using Retype. View the [source](https://github.com/retypeapp/retype/blob/main/README.md) used to generate this very page.
-
-A new Retype powered website can be up and running within seconds once Retype is installed, which itself takes only a few seconds. :+1:
-
----
-
-## Quick start
-
-You can install Retype using `npm`, `yarn`, or the `dotnet` CLI.
-
-From your command line, navigate to a folder location where you have one or more Markdown `.md` files, such as a GitHub project.
-
-Next, choose one of the following tools to first install `retypeapp` and then start Retype by using the `retype watch` [command](cli.md#retype-watch):
-
-||| NPM
-```
-npm install retypeapp --global
-retype watch
-```
-||| Yarn
-```
-yarn global add retypeapp
-retype watch
-```
-||| dotnet
-```
-dotnet tool install retypeapp --global
-retype watch
-```
-|||
-
-That's it! Your new Retype website should be up and running.
-
-!!!
-You will require either [npm](https://www.npmjs.com/get-npm), [Yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable), or the [dotnet](https://dotnet.microsoft.com/download/dotnet-core) CLI to be installed before installing Retype. Only one of those three is required, although all three could be installed on your machine too. It's up to you. :raised_hands:
-
-All operating systems are supported, including Mac, Windows, and Linux.
-!!!
-
----
-
-## Live reload
-
-If a change is detected, such as editing and saving an `.md` file, your Retype website will be updated almost instantly within the browser.
-
-The `retype watch` command runs the following three commands and listens for any new changes in your content.
-
-```
-retype init
-retype build
-retype run
-```
-
-After running `retype watch`, edit any `.md` file and see your change appear in the browser.
-
-!!! COMING SOON
-
-Retype can also build amazing reference documentation based upon your projects source code. C# projects are currently in beta support, TypeScript is coming soon, and there are plans for many more languages in the future.
-
-Just point Retype at a C# project and reference documentation will be generated based on your library's source code, code comments, and metadata.
+SakuraCasino roulette is in beta. Our contract hasn't been audited yet. Please be sure to know the risks before betting or pooling.
 
 !!!
 
 ---
 
-## Features
+## About
 
-#### :tada: It just works
+[SakuraCasino](https://sakura.casino) is a decentralized online casino based on the [Polygon (Matic)](https://polygon.technology/) network.
+The casino consists of a roulette contract deployed in the Matic mainnet and an UI that interacts with that contract.
 
-Retype has been built to be easy to use and should _"just work"_ out-of-the-box without any special configuration or troublesome setup.
+---
 
-#### :zap: Lightning fast
+### Randomness beacon
 
-Don't blink. Retype was built for speed.
+SakuraCasino uses [Chainlink VRF](https://chain.link/solutions/chainlink-vrf), which is a verifiable random function for smart contracts provided by Chainlink's oracle network.
 
-#### :white_check_mark: Easy install
+![](https://assets-global.website-files.com/5f6b7190899f41fb70882d08/5f776f7ff71fc1084ddeaaca_vrf-infographic-chainlink.svg)
 
-[Installation](guides/getting_started.md) takes only a few seconds. Then you need at least one Markdown `.md` file which Retype will start building a new website from.
+This is the first **probably-fair** roulette with truly random number gereration.
 
-#### :muscle: Powerful
+!!!secondary
 
-Project level [configuration](configuration/project.md) using `retype.json` unlocks many more Retype features and customization.
+Most Solidity-based DApps use other sources for randomness, like the *blockhash*, but those have been proven to be [vulnerable and biasable](https://betterprogramming.pub/how-to-generate-truly-random-numbers-in-solidity-and-blockchain-9ced6472dbdf).
 
-#### :pencil2: Simple formatting
+!!!
 
-Pages are [formatted](guides/formatting.md) using Markdown syntax and Retype [components](components/). Page level [configuration](configuration/page.md) is available, such as customizing the navigation `label` or `description` used by search engines.
+---
 
-#### :computer: Host anywhere
 
-Retype generates a basic HTML website that you can host on any web hosting service, such as [GitHub Pages](https://docs.github.com/en/github/working-with-github-pages/creating-a-github-pages-site). No special server-side software or external dependencies are required. You can host your Retype site as a public website or as a private website inside your organization.
+### Low fees and DAI betting
+
+The roulette was deployed in the *Matic network* because of its low fees to operate. Making a bet cost less than a cent and it can be done using the [DAI Stablecoin](https://makerdao.com/).
+
+Pooling and earning interest on the Roulette earnings is open to everyone. 
+
+---
+
+### Non-KYC and censorship resistance
+
+The Roulette contract is deployed in the blockchain. It cannot be modified or tampered with. Anyone with a *Matic wallet* and *DAI tokens* can bet or provide liquidity.
+You can bet or be a liquidity provider by simply interacting with the contract.
+
+There's a great user interface deployed at [app.sakura.casino](https://app.sakura.casino/) for interacting with the contract. You can also use it by cloning our open source [Github's repository](https://github.com/sakuracasino/roulette-ui) and running the DApp locally.
+
+!!! Why DAI?
+
+We use *DAI* because it's the only stablecoin that can't have blacklisted address (like [USDT](https://coinmarketcap.com/headlines/news/tether-blacklist-addresses-ethereum/) or [USDC](https://www.theblockcrypto.com/linked/102761/centre-consortium-blacklisted-seven-usdc-addresses-wednesday?utm_source=coinmarketcap&utm_medium=rss)). Another benefit is that *DAI* is not dependant on any goverment or entity to [secure their collaterals](https://makerdao.com/en/whitepaper/#collateral-assets).
+
+!!!
 
 ---
 
 ## Support
 
-Technical support questions are best asked in the [Discussions](https://github.com/retypeapp/retype/discussions). The discussions are monitored 24 hours a day and we will do our best to assist.
-
-If you find a defect or would like to submit a feature request, please create an [Issue](https://github.com/retypeapp/retype/issues) and we will investigate right away.
-
-Do you have a general inquiry? Please feel free to contact us at hello@object.net.
+Our software it's still in an early stage and we have a lot of ideas for future functionality. Be sure to join us in [Discord server](https://discord.gg/DHux5uEvrJ) and get involved with the project.
