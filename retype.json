@@ -1,0 +1,19 @@
+{
+  "input": ".",
+  "output": ".retype",
+  "branding":
+  {
+    "title": "Sakura Casino",
+    "label": "Docs"
+  },
+  "links": [
+    {
+      "text": "Getting Started",
+      "link": "https://retype.com/guides/getting_started/"
+    }
+  ],
+  "footer":
+  {
+    "copyright": "&copy; Copyright {{ year }}. All rights reserved."
+  }
+}
