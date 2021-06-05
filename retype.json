@@ -1,19 +1,34 @@
 {
-  "input": ".",
+  "input": "./src",
   "output": ".retype",
+  "favicon": "static/sakura-icon.svg",
   "branding":
   {
     "title": "Sakura Casino",
-    "label": "Docs"
+    "label": "Docs",
+    "logo": "static/logo.png",
+    "logoDark": "static/logo-dark.png"
   },
   "links": [
     {
       "text": "Getting Started",
       "link": "https://retype.com/guides/getting_started/"
+    },
+    {
+      "text": "GitHub",
+      "link": "https://github.com/retypeapp/retype"
+    },
+    {
+        "text": "Discussions",
+        "link": "https://github.com/retypeapp/retype/discussions"
+    },
+    {
+        "text": "Issues",
+        "link": "https://github.com/retypeapp/retype/issues"
     }
   ],
   "footer":
   {
-    "copyright": "&copy; Copyright {{ year }}. All rights reserved."
+    "copyright": "&copy; Copyright {{ year }}. [Sakura Casino](https://sakura.casino) All rights reserved."
   }
 }
