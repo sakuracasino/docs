@@ -46,14 +46,13 @@ Pooling and earning interest on the Roulette earnings is open to everyone.
 
 ### Non-KYC and censorship resistance
 
-The Roulette contract is deployed in the blockchain. It cannot be modified or tampered with. Anyone with a *Matic wallet* and *DAI tokens* can bet or provide liquidity.
-You can bet or be a liquidity provider by simply interacting with the contract.
+The Roulette contract is deployed in the blockchain. It cannot be modified or tampered with. Anyone with a *Matic wallet* and *DAI tokens* can bet or provide liquidity by simply interacting with the contract.
 
 There's a great user interface deployed at [app.sakura.casino](https://app.sakura.casino/) for interacting with the contract. You can also use it by cloning our open source [Github's repository](https://github.com/sakuracasino/roulette-ui) and running the DApp locally.
 
 !!! Why DAI?
 
-We use *DAI* because it's the only stablecoin that can't have blacklisted address (like [USDT](https://coinmarketcap.com/headlines/news/tether-blacklist-addresses-ethereum/) or [USDC](https://www.theblockcrypto.com/linked/102761/centre-consortium-blacklisted-seven-usdc-addresses-wednesday?utm_source=coinmarketcap&utm_medium=rss)). Another benefit is that *DAI* is not dependant on any goverment or entity to [secure their collaterals](https://makerdao.com/en/whitepaper/#collateral-assets).
+We use *DAI* because it's the only stablecoin that can't have blacklisted address (like [USDT](https://www.theblockcrypto.com/linked/80249/tether-blacklist-addresses-ethereum) or [USDC](https://www.theblockcrypto.com/linked/102761/centre-consortium-blacklisted-seven-usdc-addresses-wednesday)). Another benefit is that *DAI* is not dependant on any goverment or entity to [secure their collaterals](https://makerdao.com/en/whitepaper/#collateral-assets).
 
 !!!
 
