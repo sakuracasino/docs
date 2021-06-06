@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="turbo-cache-control" content="no-cache">
 
-    <title>Placing bets</title>
-
-    <meta name="description" content="Once you&#39;re connected to SakuraCasino&#39;s roulette app. You&#39;ll be able to make bets. The user interface is very simple; it consists of three parts:" />
+    <title>Roadmap</title>
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -177,120 +175,12 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="placing-bets" class="break-words">
+<doc-anchor-target id="roadmap" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#placing-bets">#</doc-anchor-trigger>
-        <span>Placing bets</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#roadmap">#</doc-anchor-trigger>
+        <span>Roadmap</span>
     </h1>
 </doc-anchor-target>
-<p><figure class="content-center">
-    <img src="../../assets/bet_placer.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>Once you&#x27;re connected to SakuraCasino&#x27;s roulette app. You&#x27;ll be able to make bets.
-The user interface is very simple; it consists of three parts:</p>
-<ol>
-<li>A <em>bet history</em> showing the lastest bets from everyone and your previous bets.</li>
-<li>The <em>bet placing area</em> where you have an interactive roulette layout to place bets. It also contains a <em>&quot;Possible outcomes&quot;</em> tab with the expected money gain/loss for each possible result.</li>
-<li>A <em>bet list</em> with all the bets you&#x27;ve placed. Here you can <em>Roll</em> and play that set of bets.</li>
-</ol>
-<doc-anchor-target id="type-of-bets">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#type-of-bets">#</doc-anchor-trigger>
-        <span>Type of bets</span>
-    </h3>
-</doc-anchor-target>
-<p>As of any european roulette, you have multiple bet types.</p>
-<ul>
-<li>By <strong>Number</strong> (x36 if you win)</li>
-<li>By <strong>Dozen</strong> (x3 if you win)</li>
-<li>By <strong>Column</strong> (x3 if you win)</li>
-<li>By <strong>Half</strong> (x2 if you win)</li>
-<li>By <strong>Color</strong> (x2 if you win)</li>
-<li>By <strong>Parity</strong> (x2 if you win)</li>
-</ul>
-<p>You can do any combination of these bets before rolling.</p>
-<p><figure class="content-center">
-    <img src="../../assets/bet_example.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>Select you desired bet by clicking on the layout. A popup will show up. There, input how much you want to bet and you will see how much would you earn in case you win.</p>
-<doc-anchor-target id="checking-your-bets">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#checking-your-bets">#</doc-anchor-trigger>
-        <span>Checking your bets</span>
-    </h3>
-</doc-anchor-target>
-<p><figure class="content-center">
-    <img src="../../assets/total_outcome.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>After you have placed your bets, they will appear on the left side. There you can see the details, the total amount and the maximum you can win.</p>
-<p>If you click on the <strong>Possible outcomes</strong> tab, you can check how much you&#x27;d earn for each possible result.</p>
-<doc-anchor-target id="rolling-your-bets">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#rolling-your-bets">#</doc-anchor-trigger>
-        <span>Rolling your bets</span>
-    </h3>
-</doc-anchor-target>
-<p><figure class="content-center">
-    <img src="../../assets/roll_dialog.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>To roll your currently placed bets, you can click on the <strong>Roll</strong> button and it will present a popup with the final amount you have to pay: this includes all the bets plus a small fee to pay for the random number generation.</p>
-<p>Since we&#x27;re using the <em>Matic network</em>, the fee is very low: only <code v-pre>$0.01</code> per roll, no matter the amount.</p>
-<doc-alert variant="primary">
-<template #title>Random Fee</template>
-<p>Chainlink&#x27;s random number fee is very low on the <em>Matic network</em>. In <em>Binance Smart Chain</em> is arround <code v-pre>$6.00</code> and in the <em>Ethereum network</em> is arround <code v-pre>$60.00</code>.</p>
-<p>We&#x27;re planning to deploy the roulette contract too in <em>BSC</em> and <em>ETH</em> when fees are lowered.</p>
-</doc-alert>
-<doc-anchor-target id="approve-and-roll">
-    <h4>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#approve-and-roll">#</doc-anchor-trigger>
-        <span>Approve and roll</span>
-    </h4>
-</doc-anchor-target>
-<p><figure class="content-center">
-    <img src="../../assets/dai_sign.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>There&#x27;re two buttons for rolling your bets: <code v-pre>Approve</code> and <code v-pre>Roll bets!</code>.</p>
-<p><figure class="content-center">
-    <img src="../../assets/roll_dialog_approved.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p><strong>Approve</strong> will ask for a wallet signature to allow the roulette to spend your <em>DAI tokens</em>.</p>
-<p><strong>Roll bets</strong> will send the roll to the roulette&#x27;s contract. You have to pay a small <em>Matic</em> fee for executing this function.</p>
-<doc-alert variant="primary">
-<template #title>DAI&#x27;s permit signature</template>
-<p>A great feature of using <em>DAI</em> to pay for rolls is that the approving function is free of fees because it uses a wallet signature instead of a contract function.</p>
-<p>In some other ERC-20 tokens like <em>USDC</em> or <em>USDT</em> you have to make an additional transaction for approving the tokens. That makes it more expensive to interact with the contract</p>
-</doc-alert>
-<doc-anchor-target id="roll-queue">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#roll-queue">#</doc-anchor-trigger>
-        <span>Roll queue</span>
-    </h3>
-</doc-anchor-target>
-<p><figure class="content-center">
-    <img src="../../assets/rolling.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>After sending a roll, you&#x27;ll see a roulette animation meaning the roll was sent and it&#x27;s waiting for the random number to arrive. It can take several seconds or much minutes.
-You can also see your pending roll in the list on the right.</p>
-<p>Nothing will happen if you close or refresh the page. Independenly of what you do, you&#x27;ll later have a popup with the result number and how much earned or loss. In case you win some, the funds will automatically be sent to your wallet.</p>
-<p><figure class="content-center">
-    <img src="../../assets/result_dialog.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
 
     
                 <!-- Required only on API pages -->
@@ -300,20 +190,20 @@ You can also see your pending roll in the list on the right.</p>
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-6 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/guide/usage">
+        <a class="px-6 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Set up wallet</span>
+                <span class="block mt-1">About</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-6 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/guide/pooling">
+        <a class="px-6 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/guide/usage">
             <span>
                 <span class="block text-right text-xs font-normal text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Pooling</span>
+                <span class="block mt-1">Set up wallet</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -361,6 +251,6 @@ You can also see your pending roll in the list on the right.</p>
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Placing bets", icon: "file" }</script>
+        <script>window.__DOCS__ = { "title": "Roadmap", icon: "file" }</script>
     </body>
 </html>
