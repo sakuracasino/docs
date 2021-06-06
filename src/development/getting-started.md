@@ -1,6 +1,6 @@
 ---
 label: Getting Started
-icon: rocket
+icon: git-branch
 order: 1000
 ---
 # Welcome to Sakura Casino

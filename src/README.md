@@ -25,7 +25,7 @@ SakuraCasino uses [Chainlink VRF](https://chain.link/solutions/chainlink-vrf), w
 
 ![](assets/chainlink_vrf_graphic.svg)
 
-This is the first **provably-fair** roulette with truly random number gereration.
+This is the first [**provably-fair**](https://en.wikipedia.org/wiki/Provably_fair_algorithm) crypto roulette with truly random number gereration.
 
 !!!secondary
 
@@ -34,7 +34,6 @@ Most Solidity-based DApps use other sources for randomness, like the *blockhash*
 !!!
 
 ---
-
 
 ### Low fees and DAI betting
 
