@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="turbo-cache-control" content="no-cache">
 
-    <title>Welcome to SakuraCasino</title>
+    <title>Set up wallet</title>
 
-    <meta name="description" content="SakuraCasino roulette is in beta. Our contract hasn&#39;t been audited yet. Please be sure to know the risks before betting or pooling." />
+    <meta name="description" content="Sakura Casino is deployed in Polygon(Matic network) for production use; and in the Kovan testnet for testing purposes. If you have the " />
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -177,71 +177,58 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="welcome-to-sakuracasino" class="break-words">
+<doc-anchor-target id="set-up-wallet" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#welcome-to-sakuracasino">#</doc-anchor-trigger>
-        <span>Welcome to SakuraCasino</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#set-up-wallet">#</doc-anchor-trigger>
+        <span>Set up wallet</span>
     </h1>
 </doc-anchor-target>
-<doc-alert variant="warning">
-<p>SakuraCasino roulette is in beta. Our contract hasn&#x27;t been audited yet. Please be sure to know the risks before betting or pooling.</p>
-</doc-alert>
-<hr />
-<doc-anchor-target id="about">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#about">#</doc-anchor-trigger>
-        <span>About</span>
-    </h2>
-</doc-anchor-target>
-<p><a href="https://sakura.casino">SakuraCasino</a> is a decentralized online casino based on the <a href="https://polygon.technology/">Polygon (Matic)</a> network.
-The casino consists of a roulette contract deployed in the Matic mainnet and an UI that interacts with that contract.</p>
-<hr />
-<doc-anchor-target id="randomness-beacon">
+<p><a href="https://sakura.casino">Sakura Casino</a> is deployed in <a href="https://polygon.technology/">Polygon</a> (Matic network) for production use; and in the <a href="https://kovan-testnet.github.io/website/">Kovan testnet</a> for testing purposes. If you have the <a href="https://metamask.io/">Metamask</a> extension installed, make sure to <a href="https://docs.matic.network/docs/develop/metamask/config-matic">add the Matic mainnet</a> to it.</p>
+<doc-anchor-target id="steps-to-get-metamask-ready">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#randomness-beacon">#</doc-anchor-trigger>
-        <span>Randomness beacon</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#steps-to-get-metamask-ready">#</doc-anchor-trigger>
+        <span>Steps to get Metamask ready</span>
     </h3>
 </doc-anchor-target>
-<p>SakuraCasino uses <a href="https://chain.link/solutions/chainlink-vrf">Chainlink VRF</a>, which is a verifiable random function for smart contracts provided by Chainlink&#x27;s oracle network.</p>
+<ol>
+<li>Install the <a href="https://metamask.io/">Metamask extension</a> and configure your Ethereum wallet.</li>
+<li>Get some ETH or DAI in your Ethereum wallet.</li>
+<li>Configure the Matic mainnet in metamask following <a href="https://docs.matic.network/docs/develop/metamask/config-matic">this guide</a>.</li>
+<li>Move funds from Ethereum to Matic using the <a href="https://wallet.matic.network/bridge">Matic bridge</a></li>
+<li>Buy some DAI in <a href="https://quickswap.exchange/#/swap">QuickSwap</a>.</li>
+<li>Your Metamask wallet is ready to be used in <em>Sakura Casino</em>.</li>
+</ol>
+<hr />
+<doc-anchor-target id="connect-a-wallet">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#connect-a-wallet">#</doc-anchor-trigger>
+        <span>Connect a wallet</span>
+    </h3>
+</doc-anchor-target>
+<p>For connecting your wallet to the <a href="https://app.sakura.casino/">roulette app</a>, click on the <code v-pre>Connect to a wallet</code> button on the upper right.</p>
 <p><figure class="content-center">
-    <img src="assets/chainlink_vrf_graphic.svg" alt="" />
+    <img src="../../assets/connect_to_wallet.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<p>This is the first <strong>probably-fair</strong> roulette with truly random number gereration.</p>
-<doc-alert variant="secondary">
-<p>Most Solidity-based DApps use other sources for randomness, like the <em>blockhash</em>, but those have been proven to be <a href="https://betterprogramming.pub/how-to-generate-truly-random-numbers-in-solidity-and-blockchain-9ced6472dbdf">vulnerable and biasable</a>.</p>
-</doc-alert>
-<hr />
-<doc-anchor-target id="low-fees-and-dai-betting">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#low-fees-and-dai-betting">#</doc-anchor-trigger>
-        <span>Low fees and DAI betting</span>
-    </h3>
-</doc-anchor-target>
-<p>The roulette was deployed in the <em>Matic network</em> because of its low fees to operate. Making a bet cost less than a cent and it can be done using the <a href="https://makerdao.com/">DAI Stablecoin</a>.</p>
-<p>Pooling and earning interest on the Roulette earnings is open to everyone.</p>
-<hr />
-<doc-anchor-target id="non-kyc-and-censorship-resistance">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#non-kyc-and-censorship-resistance">#</doc-anchor-trigger>
-        <span>Non-KYC and censorship resistance</span>
-    </h3>
-</doc-anchor-target>
-<p>The Roulette contract is deployed in the blockchain. It cannot be modified or tampered with. Anyone with a <em>Matic wallet</em> and <em>DAI tokens</em> can bet or provide liquidity by simply interacting with the contract.</p>
-<p>There&#x27;s a great user interface deployed at <a href="https://app.sakura.casino/">app.sakura.casino</a> for interacting with the contract. You can also use it by cloning our open source <a href="https://github.com/sakuracasino/roulette-ui">Github&#x27;s repository</a> and running the DApp locally.</p>
-<doc-alert variant="primary">
-<template #title>Why DAI?</template>
-<p>We use <em>DAI</em> because it&#x27;s the only stablecoin that can&#x27;t have blacklisted address (like <a href="https://www.theblockcrypto.com/linked/80249/tether-blacklist-addresses-ethereum">USDT</a> or <a href="https://www.theblockcrypto.com/linked/102761/centre-consortium-blacklisted-seven-usdc-addresses-wednesday">USDC</a>). Another benefit is that <em>DAI</em> is not dependant on any goverment or entity to <a href="https://makerdao.com/en/whitepaper/#collateral-assets">secure their collaterals</a>.</p>
-</doc-alert>
-<hr />
-<doc-anchor-target id="support">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#support">#</doc-anchor-trigger>
-        <span>Support</span>
-    </h2>
-</doc-anchor-target>
-<p>Our software it&#x27;s still in an early stage and we have a lot of ideas for future functionality. Be sure to join us in <a href="https://discord.gg/DHux5uEvrJ">Discord server</a> and get involved with the project.</p>
+<p>This will open a dialog where, for the purpose of this example, you can select the <em>Metamask wallet</em>.</p>
+<p><figure class="content-center">
+    <img src="../../assets/connect_to_wallet_dialog.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>You see another popup from your <em>Metamask wallet</em> where you&#x27;ll be asked to confirm the connection with the site.</p>
+<p><figure class="content-center">
+    <img src="../../assets/metamask_connect_2.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>Once you&#x27;re ready, you should be able to see your wallet&#x27;s balance in the app</p>
+<p><figure class="content-center">
+    <img src="../../assets/wallet_balance.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
 
     
                 <!-- Required only on API pages -->
@@ -251,13 +238,20 @@ The casino consists of a roulette contract deployed in the Matic mainnet and an 
             
 <nav class="flex mt-14">
     <div class="w-1/2">
+        <a class="px-6 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/guide/usage">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+            <span>
+                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                <span class="block mt-1">Set up wallet</span>
+            </span>
+        </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-6 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/guide/usage">
+        <a class="px-6 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/guide/pooling">
             <span>
                 <span class="block text-right text-xs font-normal text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Set up wallet</span>
+                <span class="block mt-1">Pooling</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -305,6 +299,6 @@ The casino consists of a roulette contract deployed in the Matic mainnet and an 
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Welcome to SakuraCasino", icon: "file" }</script>
+        <script>window.__DOCS__ = { "title": "Set up wallet", icon: "file" }</script>
     </body>
 </html>
