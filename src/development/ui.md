@@ -1,7 +1,7 @@
 ---
-label: Getting Started
-icon: rocket
-order: 1000
+label: UI Development
+icon: package
+order: 900
 ---
 # Welcome to Sakura Casino
 
