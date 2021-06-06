@@ -25,7 +25,7 @@ SakuraCasino uses [Chainlink VRF](https://chain.link/solutions/chainlink-vrf), w
 
 ![](assets/chainlink_vrf_graphic.svg)
 
-This is the first **probably-fair** roulette with truly random number gereration.
+This is the first **provably-fair** roulette with truly random number gereration.
 
 !!!secondary
 
