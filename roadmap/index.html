@@ -7,6 +7,8 @@
 
     <title>Roadmap</title>
 
+    <meta name="description" content="Sakura Casino is in beta version for the roulette contract. We&#39;re planning to futher improve the contract and the number of games available." />
+
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/assets/sakura-icon.svg" rel="icon" />
@@ -180,6 +182,66 @@
         <doc-anchor-trigger class="header-anchor-trigger" to="#roadmap">#</doc-anchor-trigger>
         <span>Roadmap</span>
     </h1>
+</doc-anchor-target>
+<p>Sakura Casino is in beta version for the roulette contract. We&#x27;re planning to futher improve the contract and the number of games available.</p>
+<p>We&#x27;re still early in the development stages. So feel free to join us in our <a href="https://discord.gg/DHux5uEvrJ">Discord Server</a> if you want to get the latest updates or contribute to the project.</p>
+<doc-alert variant="success">
+<template #title>Looking for devs</template>
+<p>Currently, the team only consists of one developer (me <span class="docs-emoji">&#x1F44B;</span>), but I&#x27;m open to expand the team and welcome any pull requests on github.</p>
+<p>My goal is to make the project successful, but also profitable in order to get funds for its development.</p>
+<p>Look for me in discord as <code v-pre>index</code>.</p>
+</doc-alert>
+<doc-anchor-target id="planned-features">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#planned-features">#</doc-anchor-trigger>
+        <span>Planned features</span>
+    </h2>
+</doc-anchor-target>
+<p>This is a list of planned improvements to the <em>Sakura Casino&#x27;s ecosystem</em>. Some of these may not be implemented or may suffer modifications. Unfortunaly, we don&#x27;t have an expected release date for the features, but we hope to have a working casino with many games by the end of the year.</p>
+<p>We&#x27;re currently dicussing these ideas, so feel free to share your thoughts or new ideas in our discord server.</p>
+<doc-anchor-target id="roll-queue">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#roll-queue">#</doc-anchor-trigger>
+        <span>Roll queue</span>
+    </h3>
+</doc-anchor-target>
+<p>The basic idea is to create a queue of all the rolls in a centain timeframe (like 5 minutes), the make one single VRF request every <code v-pre>5 minutes</code> to resolve all the pending requests. This can be done by mixing the <em>VRF result</em> with ordered numbers, like how is <a href="https://docs.chain.link/docs/get-a-random-number/#making-the-most-out-of-vrf">done here</a>. I have not prove how much <em>randomness entropy</em> is lost for using 100 or 1000 numbers, but I assume it&#x27;s very low.</p>
+<p>There are a few reasons for this update:</p>
+<ul>
+<li><p>We can save a lot in <code v-pre>LINK</code> fees. This very valuable if we use the <em>Matic network</em> (which is the reason why I dropped this option for the initial release), but if we want to migrate the contract to <em>BSC</em> or even <em>ETH 2.0</em>, this would be required feature. I would suggest to not speculate for other alternativas like BAND or hope fees are lowered in the future.</p>
+</li>
+<li><p>Avoid VRF bottleneck: this shouldn&#x27;t be too much of a problem if the VRF Coordinator is scalable. But we might have some issues in the future if we spam the contract and nodes too much.</p>
+</li>
+</ul>
+<doc-anchor-target id="mutiple-bet-tokens">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mutiple-bet-tokens">#</doc-anchor-trigger>
+        <span>Mutiple bet tokens</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="multiple-games-scaling">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#multiple-games-scaling">#</doc-anchor-trigger>
+        <span>Multiple games scaling</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="sakura-casino-token">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#sakura-casino-token">#</doc-anchor-trigger>
+        <span>Sakura Casino token</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="shared-random">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#shared-random">#</doc-anchor-trigger>
+        <span>Shared random</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="multiple-user-games">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#multiple-user-games">#</doc-anchor-trigger>
+        <span>Multiple user games</span>
+    </h3>
 </doc-anchor-target>
 
     
