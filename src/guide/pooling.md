@@ -20,8 +20,6 @@ On the current version, there's no limit how much you can pool and how many shar
 However, we're exploring more efficcient liquidity provisioning protocols for future versions of the casino. You can check those in our [roadmap](/roadmap).
 !!!
 
-### Example
-
 ### How to provide liquidity
 
 ![](../assets/pooling.png)
@@ -34,3 +32,32 @@ If you click on *Add Liquidity* a popup will open, there you have to put how muc
 
 
 If you wish to withdraw your current liquidity, just click on *Remove liquidity*.
+
+### Examples
+
+Here are some examples of what can happen to the provided liquidity:
+
+#### Basic example
+* Pool has `1000 DAI` initially
+* You provide `100 DAI` in liquidity, making it `1100 DAI` now.
+* You're minted the equivalent token shares of `~9.09%`
+* After a while the pool grows from `1100 DAI` to `2000 DAI` because of bets
+* You now have `2000 * 9.09% = 181.81 DAI` available to withdraw.
+
+
+#### Share dilution
+* Pool has `1000 DAI` initially
+* You provide `100 DAI` in liquidity, making it `1100 DAI` now.
+* You're minted the equivalent token shares of `~9.09%`
+* Another person provides an additional `100 DAI` in liquidity, making it `1200 DAI` now.
+* More shares are printed so your percentage gets diluted to `~8.33%`
+* After a while the pool grows from `1100 DAI` to `2000 DAI` because of bets
+* You now have `2000 * 8.33% = 166.60 DAI` available to withdraw.
+
+!!!success
+
+You'll always earn DAI, but the grow rate can decrease if more people join the pool.
+
+To be clear, it's similar to how [Uniswap pools work](https://uniswap.org/docs/v2/advanced-topics/fees/#liquidity-provider-fees). Instead of fees earnings come from the roulette odds.
+
+!!!
