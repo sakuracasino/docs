@@ -5,6 +5,10 @@ order: 900
 ---
 # Placing bets
 
+!!!warning
+SakuraCasino roulette is in beta. Our contract hasn't been audited yet. Please be sure to know the risks before betting or pooling.
+!!!
+
 ![](../assets/bet_placer.png)
 
 Once you're connected to SakuraCasino's roulette app. You'll be able to make bets.

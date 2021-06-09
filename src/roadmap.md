@@ -38,8 +38,7 @@ There are a few reasons for this update:
 ### Mutiple bet tokens
 
 ## Multiple games scaling
-
 ### Sakura Casino token
+### Governance and airdrops
 ### Shared random
 ### Multiple user games
-

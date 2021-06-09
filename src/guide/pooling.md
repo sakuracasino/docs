@@ -3,35 +3,34 @@ label: Pooling
 icon: graph
 order: 800
 ---
-# Set up wallet
+# Pooling
 
-[Sakura Casino](https://sakura.casino) is deployed in [Polygon](https://polygon.technology/) (Matic network) for production use; and in the [Kovan testnet](https://kovan-testnet.github.io/website/) for testing purposes. If you have the [Metamask](https://metamask.io/) extension installed, make sure to [add the Matic mainnet](https://docs.matic.network/docs/develop/metamask/config-matic) to it.
+!!!warning
+SakuraCasino roulette is in beta. Our contract hasn't been audited yet. Please be sure to know the risks before betting or pooling.
+!!!
 
-### Steps to get Metamask ready
+Currently, anyone can be a liquidity provider for the roulette contract.
 
-1. Install the [Metamask extension](https://metamask.io/) and configure your Ethereum wallet.
-2. Get some ETH or DAI in your Ethereum wallet.
-3. Configure the Matic mainnet in metamask following [this guide](https://docs.matic.network/docs/develop/metamask/config-matic).
-4. Move funds from Ethereum to Matic using the [Matic bridge](https://wallet.matic.network/bridge)
-5. Buy some DAI in [QuickSwap](https://quickswap.exchange/#/swap).
-6. Your Metamask wallet is ready to be used in *Sakura Casino*.
+If you decide to add liquidity, pool shares will be printed, represented with the *`SV1` ERC-20 token*.
+Because of the nature of roulette probabilities, when people play, the expected value of the pool with grow while you ownership percentage will remain the same. This will allow you to collect interests from pooling.
 
----
+!!! Future of the liquidity protocol
+On the current version, there's no limit how much you can pool and how many shares can be printed. It will remain like that for this contract, forever.
 
-### Connect a wallet
+However, we're exploring more efficcient liquidity provisioning protocols for future versions of the casino. You can check those in our [roadmap](/roadmap).
+!!!
 
-For connecting your wallet to the [roulette app](https://app.sakura.casino/), click on the `Connect to a wallet` button on the upper right.
+### Example
 
-![](../assets/connect_to_wallet.png)
+### How to provide liquidity
 
-This will open a dialog where, for the purpose of this example, you can select the *Metamask wallet*.
+![](../assets/pooling.png)
 
-![](../assets/connect_to_wallet_dialog.png)
+Go to the [application interface](https://app.sakura.casino) and select the tab  `Pool`. There you'll have an interface with the current total liquidity and your deposited liquidity and pool percentage.
 
-You see another popup from your *Metamask wallet* where you'll be asked to confirm the connection with the site.
+If you click on *Add Liquidity* a popup will open, there you have to put how much you wish to add. 
 
-![](../assets/metamask_connect_2.png)
+![](../assets/pooling_dialog.png)
 
-Once you're ready, you should be able to see your wallet's balance in the app
 
-![](../assets/wallet_balance.png)
+If you wish to withdraw your current liquidity, just click on *Remove liquidity*.
