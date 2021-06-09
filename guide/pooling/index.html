@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="turbo-cache-control" content="no-cache">
 
-    <title>Set up wallet</title>
+    <title>Pooling</title>
 
-    <meta name="description" content="Sakura Casino is deployed in Polygon(Matic network) for production use; and in the Kovan testnet for testing purposes. If you have the " />
+    <meta name="description" content="SakuraCasino roulette is in beta. Our contract hasn&#39;t been audited yet. Please be sure to know the risks before betting or pooling." />
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -177,58 +177,48 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="set-up-wallet" class="break-words">
+<doc-anchor-target id="pooling" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#set-up-wallet">#</doc-anchor-trigger>
-        <span>Set up wallet</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#pooling">#</doc-anchor-trigger>
+        <span>Pooling</span>
     </h1>
 </doc-anchor-target>
-<p><a href="https://sakura.casino">Sakura Casino</a> is deployed in <a href="https://polygon.technology/">Polygon</a> (Matic network) for production use; and in the <a href="https://kovan-testnet.github.io/website/">Kovan testnet</a> for testing purposes. If you have the <a href="https://metamask.io/">Metamask</a> extension installed, make sure to <a href="https://docs.matic.network/docs/develop/metamask/config-matic">add the Matic mainnet</a> to it.</p>
-<doc-anchor-target id="steps-to-get-metamask-ready">
+<doc-alert variant="warning">
+<p>SakuraCasino roulette is in beta. Our contract hasn&#x27;t been audited yet. Please be sure to know the risks before betting or pooling.</p>
+</doc-alert>
+<p>Currently, anyone can be a liquidity provider for the roulette contract.</p>
+<p>If you decide to add liquidity, pool shares will be printed, represented with the <em><code v-pre>SV1</code> ERC-20 token</em>.
+Because of the nature of roulette probabilities, when people play, the expected value of the pool with grow while you ownership percentage will remain the same. This will allow you to collect interests from pooling.</p>
+<doc-alert variant="primary">
+<template #title>Future of the liquidity protocol</template>
+<p>On the current version, there&#x27;s no limit how much you can pool and how many shares can be printed. It will remain like that for this contract, forever.</p>
+<p>However, we&#x27;re exploring more efficcient liquidity provisioning protocols for future versions of the casino. You can check those in our <a href="/roadmap">roadmap</a>.</p>
+</doc-alert>
+<doc-anchor-target id="example">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#steps-to-get-metamask-ready">#</doc-anchor-trigger>
-        <span>Steps to get Metamask ready</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#example">#</doc-anchor-trigger>
+        <span>Example</span>
     </h3>
 </doc-anchor-target>
-<ol>
-<li>Install the <a href="https://metamask.io/">Metamask extension</a> and configure your Ethereum wallet.</li>
-<li>Get some ETH or DAI in your Ethereum wallet.</li>
-<li>Configure the Matic mainnet in metamask following <a href="https://docs.matic.network/docs/develop/metamask/config-matic">this guide</a>.</li>
-<li>Move funds from Ethereum to Matic using the <a href="https://wallet.matic.network/bridge">Matic bridge</a></li>
-<li>Buy some DAI in <a href="https://quickswap.exchange/#/swap">QuickSwap</a>.</li>
-<li>Your Metamask wallet is ready to be used in <em>Sakura Casino</em>.</li>
-</ol>
-<hr />
-<doc-anchor-target id="connect-a-wallet">
+<doc-anchor-target id="how-to-provide-liquidity">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#connect-a-wallet">#</doc-anchor-trigger>
-        <span>Connect a wallet</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#how-to-provide-liquidity">#</doc-anchor-trigger>
+        <span>How to provide liquidity</span>
     </h3>
 </doc-anchor-target>
-<p>For connecting your wallet to the <a href="https://app.sakura.casino/">roulette app</a>, click on the <code v-pre>Connect to a wallet</code> button on the upper right.</p>
 <p><figure class="content-center">
-    <img src="../../assets/connect_to_wallet.png" alt="" />
+    <img src="../../assets/pooling.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<p>This will open a dialog where, for the purpose of this example, you can select the <em>Metamask wallet</em>.</p>
+<p>Go to the <a href="https://app.sakura.casino">application interface</a> and select the tab  <code v-pre>Pool</code>. There you&#x27;ll have an interface with the current total liquidity and your deposited liquidity and pool percentage.</p>
+<p>If you click on <em>Add Liquidity</em> a popup will open, there you have to put how much you wish to add.</p>
 <p><figure class="content-center">
-    <img src="../../assets/connect_to_wallet_dialog.png" alt="" />
+    <img src="../../assets/pooling_dialog.png" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<p>You see another popup from your <em>Metamask wallet</em> where you&#x27;ll be asked to confirm the connection with the site.</p>
-<p><figure class="content-center">
-    <img src="../../assets/metamask_connect_2.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<p>Once you&#x27;re ready, you should be able to see your wallet&#x27;s balance in the app</p>
-<p><figure class="content-center">
-    <img src="../../assets/wallet_balance.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
+<p>If you wish to withdraw your current liquidity, just click on <em>Remove liquidity</em>.</p>
 
     
                 <!-- Required only on API pages -->
@@ -299,6 +289,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Set up wallet", icon: "file" }</script>
+        <script>window.__DOCS__ = { "title": "Pooling", icon: "file" }</script>
     </body>
 </html>
