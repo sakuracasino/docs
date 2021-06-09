@@ -194,12 +194,6 @@ Because of the nature of roulette probabilities, when people play, the expected 
 <p>On the current version, there&#x27;s no limit how much you can pool and how many shares can be printed. It will remain like that for this contract, forever.</p>
 <p>However, we&#x27;re exploring more efficcient liquidity provisioning protocols for future versions of the casino. You can check those in our <a href="/roadmap">roadmap</a>.</p>
 </doc-alert>
-<doc-anchor-target id="example">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#example">#</doc-anchor-trigger>
-        <span>Example</span>
-    </h3>
-</doc-anchor-target>
 <doc-anchor-target id="how-to-provide-liquidity">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#how-to-provide-liquidity">#</doc-anchor-trigger>
@@ -219,6 +213,45 @@ Because of the nature of roulette probabilities, when people play, the expected 
 </figure>
 </p>
 <p>If you wish to withdraw your current liquidity, just click on <em>Remove liquidity</em>.</p>
+<doc-anchor-target id="examples">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#examples">#</doc-anchor-trigger>
+        <span>Examples</span>
+    </h3>
+</doc-anchor-target>
+<p>Here are some examples of what can happen to the provided liquidity:</p>
+<doc-anchor-target id="basic-example">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#basic-example">#</doc-anchor-trigger>
+        <span>Basic example</span>
+    </h4>
+</doc-anchor-target>
+<ul>
+<li>Pool has <code v-pre>1000 DAI</code> initially</li>
+<li>You provide <code v-pre>100 DAI</code> in liquidity, making it <code v-pre>1100 DAI</code> now.</li>
+<li>You&#x27;re minted the equivalent token shares of <code v-pre>~9.09%</code></li>
+<li>After a while the pool grows from <code v-pre>1100 DAI</code> to <code v-pre>2000 DAI</code> because of bets</li>
+<li>You now have <code v-pre>2000 * 9.09% = 181.81 DAI</code> available to withdraw.</li>
+</ul>
+<doc-anchor-target id="share-dilution">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#share-dilution">#</doc-anchor-trigger>
+        <span>Share dilution</span>
+    </h4>
+</doc-anchor-target>
+<ul>
+<li>Pool has <code v-pre>1000 DAI</code> initially</li>
+<li>You provide <code v-pre>100 DAI</code> in liquidity, making it <code v-pre>1100 DAI</code> now.</li>
+<li>You&#x27;re minted the equivalent token shares of <code v-pre>~9.09%</code></li>
+<li>Another person provides an additional <code v-pre>100 DAI</code> in liquidity, making it <code v-pre>1200 DAI</code> now.</li>
+<li>More shares are printed so your percentage gets diluted to <code v-pre>~8.33%</code></li>
+<li>After a while the pool grows from <code v-pre>1100 DAI</code> to <code v-pre>2000 DAI</code> because of bets</li>
+<li>You now have <code v-pre>2000 * 8.33% = 166.60 DAI</code> available to withdraw.</li>
+</ul>
+<doc-alert variant="success">
+<p>You&#x27;ll always earn DAI, but the grow rate can decrease if more people join the pool.</p>
+<p>To be clear, it&#x27;s similar to how <a href="https://uniswap.org/docs/v2/advanced-topics/fees/#liquidity-provider-fees">Uniswap pools work</a>. Instead of fees earnings come from the roulette odds.</p>
+</doc-alert>
 
     
                 <!-- Required only on API pages -->
