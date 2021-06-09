@@ -50,7 +50,7 @@ Here are some examples of what can happen to the provided liquidity:
 * You provide `100 DAI` in liquidity, making it `1100 DAI` now.
 * You're minted the equivalent token shares of `~9.09%`
 * Another person provides an additional `100 DAI` in liquidity, making it `1200 DAI` now.
-* More shares are printed so your percentage gets diluted to `~8.33%`
+* More shares were printed, so your percentage gets diluted to `~8.33%`
 * After a while the pool grows from `1100 DAI` to `2000 DAI` because of bets
 * You now have `2000 * 8.33% = 166.60 DAI` available to withdraw.
 
