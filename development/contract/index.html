@@ -7,6 +7,8 @@
 
     <title>Contract Development</title>
 
+    <meta name="description" content="The contract&#39;s repository is built using truffle and ganache." />
+
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/assets/sakura-icon.svg" rel="icon" />
@@ -180,6 +182,52 @@
         <doc-anchor-trigger class="header-anchor-trigger" to="#contract-development">#</doc-anchor-trigger>
         <span>Contract Development</span>
     </h1>
+</doc-anchor-target>
+<p>The <a href="https://github.com/sakuracasino/roulette-contract">contract&#x27;s repository</a> is built using <a href="https://www.trufflesuite.com/">truffle</a> and <a href="https://www.trufflesuite.com/ganache">ganache</a>.</p>
+<p>You don&#x27;t need to install any of these globally, they&#x27;re implemented as <em><code v-pre>npm</code> dependencies</em> of the projects.</p>
+<p>To get started, follow the instructions in the <code v-pre>README</code> to run the project:
+<a href="https://github.com/sakuracasino/roulette-contract#running-the-project">https://github.com/sakuracasino/roulette-contract#running-the-project</a></p>
+<p>Remember that you have to run <code v-pre>make migrate</code> and <code v-pre>make vrfsigner</code> to have it completely working</p>
+<doc-alert variant="primary">
+<template #title>VRF Signer</template>
+<p>The <code v-pre>vrf-signer</code> is just a watcher that fulfills the randomness requests with the provided seed. If you don&#x27;t have it running, it will not resolve the roulette rolls.</p>
+</doc-alert>
+<p>Once you have the ganache server running, you can use the RPC URL <code v-pre>http://localhost:8545</code> and the Chain ID <code v-pre>1337</code> for connecting it to Metamask.</p>
+<doc-anchor-target id="contracts">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#contracts">#</doc-anchor-trigger>
+        <span>Contracts</span>
+    </h3>
+</doc-anchor-target>
+<p>We have a few contracts in this repo:</p>
+<ul>
+<li><code v-pre>Roulete.sol</code>, which contains all the contract code.</li>
+<li><code v-pre>DAIMock.sol</code> is a test DAI mock used for the local network and the Kovan network.</li>
+<li><em>Other Mocks</em> like <code v-pre>LinkTokenMock.sol</code>, <code v-pre>VRFCoordinatorMock.sol</code>, <code v-pre>chainlink-mocks</code> are only for testing and local env.</li>
+</ul>
+<doc-anchor-target id="roulette-sol-walkthrough">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#roulette-sol-walkthrough">#</doc-anchor-trigger>
+        <span>Roulette.sol walkthrough</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="testing-environment">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#testing-environment">#</doc-anchor-trigger>
+        <span>Testing environment</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="npm-package">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#npm-package">#</doc-anchor-trigger>
+        <span>NPM package</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="linking-it-with-the-ui">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#linking-it-with-the-ui">#</doc-anchor-trigger>
+        <span>Linking it with the UI</span>
+    </h4>
 </doc-anchor-target>
 
     
