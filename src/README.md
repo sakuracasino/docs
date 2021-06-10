@@ -2,17 +2,13 @@
 label: About
 icon: info
 ---
-# Welcome to SakuraCasino
+# About Sakura Casino
 
 !!!warning
 
 SakuraCasino roulette is in beta. Our contract hasn't been audited yet. Please be sure to know the risks before betting or pooling.
 
 !!!
-
----
-
-## About
 
 [SakuraCasino](https://sakura.casino) is a decentralized online casino based on the [Polygon (Matic)](https://polygon.technology/) network.
 The casino consists of a roulette contract deployed in the *Matic mainnet* with an UI that interacts with that contract.

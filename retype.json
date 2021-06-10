@@ -9,6 +9,9 @@
     "logo": "assets/logo.png",
     "logoDark": "assets/logo-dark.png"
   },
+  "meta": {
+    "title": " | SakuraCasino Documentation"
+  },
   "links": [
     {
       "text": "Getting Started",
