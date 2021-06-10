@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="turbo-cache-control" content="no-cache">
 
-    <title>Contract Development</title>
+    <title>Contract Development | SakuraCasino Documentation</title>
 
     <meta name="description" content="The contract&#39;s repository is built using truffle and ganache." />
 
@@ -15,6 +15,7 @@
     <link href="/resources/css/retype.css" rel="stylesheet" />
 
     <script type="text/javascript" src="/resources/js/config.js" defer></script>
+    <script type="text/javascript" src="/resources/js/prism.js" defer></script>
     <script type="text/javascript" src="/resources/js/retype.js" defer></script>
 </head>
     <body>
@@ -30,13 +31,13 @@
         <!-- Logo -->
         <div class="flex items-center justify-between h-full py-2 md:w-75">
             <div class="flex items-center px-2 md:px-6">
-                <span id="docs-site-logo" class="dark:text-white text-xl leading-snug font-semibold line-clamp-1 md:line-clamp-2">
-                    <a href="/">
-                        <img class="dark:hidden" src="/assets/logo.png">
-                        <img class="hidden dark:block" src="/assets/logo-dark.png">
-                    </a>
-                </span>
-                <span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
+                <a id="docs-site-logo" href="/" class="flex items-center leading-snug text-xl">
+                    <span class="w-10 mr-2 flex-grow-0 flex-shrink-0 overflow-hidden">
+                        <img class="max-h-10 dark:hidden md:inline-block" src="/assets/logo.png">
+                        <img class="max-h-10 hidden dark:inline-block" src="/assets/logo-dark.png">
+                    </span>
+                    <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Sakura Casino</span>
+                </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
             </div>
 
             <span class="hidden h-8 border-r md:inline-block dark:border-dark-650"></span>
@@ -194,10 +195,10 @@
 </doc-alert>
 <p>Once you have the ganache server running, you can use the RPC URL <code v-pre>http://localhost:8545</code> and the Chain ID <code v-pre>1337</code> for connecting it to Metamask.</p>
 <doc-anchor-target id="contracts">
-    <h3>
+    <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#contracts">#</doc-anchor-trigger>
         <span>Contracts</span>
-    </h3>
+    </h2>
 </doc-anchor-target>
 <p>We have a few contracts in this repo:</p>
 <ul>
@@ -205,32 +206,148 @@
 <li><code v-pre>DAIMock.sol</code> is a test DAI mock used for the local network and the Kovan network.</li>
 <li><em>Other Mocks</em> like <code v-pre>LinkTokenMock.sol</code>, <code v-pre>VRFCoordinatorMock.sol</code>, <code v-pre>chainlink-mocks</code> are only for testing and local env.</li>
 </ul>
-<doc-anchor-target id="roulette-sol-walkthrough">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#roulette-sol-walkthrough">#</doc-anchor-trigger>
+<doc-anchor-target id="roulettesol-walkthrough">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#roulettesol-walkthrough">#</doc-anchor-trigger>
         <span>Roulette.sol walkthrough</span>
-    </h3>
+    </h2>
 </doc-anchor-target>
-<doc-anchor-target id="testing-environment">
+<doc-anchor-target id="chainlink-vrf">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#testing-environment">#</doc-anchor-trigger>
-        <span>Testing environment</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#chainlink-vrf">#</doc-anchor-trigger>
+        <span>Chainlink VRF</span>
     </h3>
 </doc-anchor-target>
-<doc-anchor-target id="npm-package">
+<p>We use <a href="https://docs.chain.link/docs/chainlink-vrf/">Chainlink VRF</a> for generating random numbers that resolve the rolls.</p>
+<p>The roulette contract it&#x27;s based on the <a href="https://docs.chain.link/docs/get-a-random-number/">VRFConsumerBase example</a> in Chainlink&#x27;s documentation.</p>
+<p>Here&#x27;s the code structure from the contract that it&#x27;s relevant to <em>Chainlink VRF</em></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">contract Roulette is VRFConsumerBase, ERC20, Ownable {
+
+    // Chainlink VRF Data
+    bytes32 internal keyHash;
+    uint256 internal fee;
+    event RequestedRandomness(bytes32 requestId);
+
+    /**
+     * Contract's constructor
+     * @param _bet_token address of the token used for bets and liquidity
+     * @param _vrfCoordinator address of Chainlink's VRFCoordinator contract
+     * @param _link address of the LINK token
+     * @param _keyHash public key of Chainlink's VRF
+     * @param _fee fee to be paid in LINK to Chainlink's VRF
+     */
+    constructor(
+        address _bet_token,
+        address _vrfCoordinator,
+        address _link,
+        bytes32 _keyHash,
+        uint _fee
+    )  ERC20(&quot;SAKURA_V1&quot;, &quot;SV1&quot;) VRFConsumerBase(_vrfCoordinator, _link) public {}
+
+    /**
+     * Creates a randomness request for Chainlink VRF
+     * @param userProvidedSeed random number seed for the VRF
+     * @return requestId id of the created randomness request
+     */
+    function getRandomNumber(uint256 userProvidedSeed) private returns (bytes32 requestId) {}
+
+    /**
+     * Randomness fulfillment to be called by the VRF Coordinator once a request is resolved
+     * This function makes the expected payout to the user
+     * @param requestId id of the resolved request
+     * @param randomness generated random number
+     */
+    function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {}
+}</code></pre>
+</doc-codeblock></div>
+<p>The contract calls <code v-pre>getRandomNumber</code> function on every roll request, with a seed provided by the user. Then, <code v-pre>fulfillRandomness</code> gets called by the <code v-pre>VRFCoordinator</code> and it performs the logic to decided if the user won or not.</p>
+<doc-anchor-target id="owner-role">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#npm-package">#</doc-anchor-trigger>
-        <span>NPM package</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#owner-role">#</doc-anchor-trigger>
+        <span>Owner role</span>
     </h3>
 </doc-anchor-target>
-<doc-anchor-target id="linking-it-with-the-ui">
+<p>The contract&#x27;s <strong>owner</strong> only has (a limited) control in two parts: fees and maximum bet limits.</p>
+<doc-anchor-target id="vrf-fees">
     <h4>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#linking-it-with-the-ui">#</doc-anchor-trigger>
-        <span>Linking it with the UI</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#vrf-fees">#</doc-anchor-trigger>
+        <span>VRF fees</span>
     </h4>
 </doc-anchor-target>
+<p>VRF fees need to be paid in <a href="https://coinmarketcap.com/currencies/chainlink/">LINK</a>. So the contract charges a fee set by the <strong>owner</strong> (in the <em>bet token</em>) for each roll. These fees go to the <code v-pre>collected_fees</code> variable and can be withdrawn by the <strong>owner</strong>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">uint256 public collected_fees = 0;
 
-    
+/**
+  * Withdraws the collected fees
+  */
+function withdrawFees() external onlyOwner {
+    uint256 _collected_fees = collected_fees;
+    collected_fees = 0;
+    IERC20(bet_token).transfer(owner(), _collected_fees);
+}</code></pre>
+</doc-codeblock></div>
+<p>The owner then buys <em>LINK</em> with those fees and fund the contract with it. This should not happen very often because LINK fees on the Matic network very low.</p>
+<doc-alert variant="primary">
+<template #title>Automated LINK swap</template>
+<p>A proposal to get rid of this owner role is to automatically trade the <code v-pre>collected_fees</code> amount for LINK by calling the QuickSwap contract itself after a certain threshold is collected.</p>
+<p>The interesting part is that it doesn&#x27;t need any contract migration. We could just move the ownership to a contract address that does that automatically.</p>
+</doc-alert>
+<doc-anchor-target id="max-bet-limit">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#max-bet-limit">#</doc-anchor-trigger>
+        <span>Max bet limit</span>
+    </h4>
+</doc-anchor-target>
+<p>There&#x27;s also the concept of a max bet. Currently it&#x27;s fixed at <code v-pre>$1</code>, but it can&#x27;t be more that <code v-pre>0.27%</code> of the current liquidity (to prevent max-bet setting abuse). That percentage is managed by the <code v-pre>minLiquidityMultiplier</code> variable.</p>
+<p>This is a temporary measure for the current low liquidty. We plan to change it to <em>infinity</em> and only use a percentage of current liquidity, but we don&#x27;t know which should be the proper amount yet.</p>
+<doc-anchor-target id="bet-token">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#bet-token">#</doc-anchor-trigger>
+        <span>Bet token</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="liquidity-management">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#liquidity-management">#</doc-anchor-trigger>
+        <span>Liquidity management</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="running-rolls">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#running-rolls">#</doc-anchor-trigger>
+        <span>Running rolls</span>
+    </h3>
+</doc-anchor-target>
+<doc-anchor-target id="roll-redeem">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#roll-redeem">#</doc-anchor-trigger>
+        <span>Roll redeem</span>
+    </h4>
+</doc-anchor-target>
+<doc-anchor-target id="testing-environment">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#testing-environment">#</doc-anchor-trigger>
+        <span>Testing environment</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="npm-package">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#npm-package">#</doc-anchor-trigger>
+        <span>NPM package</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="linking-it-with-the-ui">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#linking-it-with-the-ui">#</doc-anchor-trigger>
+        <span>Linking it with the UI</span>
+    </h3>
+</doc-anchor-target>
+
+
+
+
                 <!-- Required only on API pages -->
                 <doc-toolbar-member-filter-no-results />
             </div>
@@ -238,7 +355,7 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-6 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/development/getting-started">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/development/getting-started">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
@@ -248,9 +365,9 @@
     </div>
 
     <div class="w-1/2">
-        <a class="px-6 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/development/ui">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/development/ui">
             <span>
-                <span class="block text-right text-xs font-normal text-gray-400 dark:text-dark-400">Next</span>
+                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
                 <span class="block mt-1">UI Development</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
