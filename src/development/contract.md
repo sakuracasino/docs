@@ -114,10 +114,18 @@ The interesting part is that it doesn't need any contract migration. We could ju
 
 There's also the concept of a max bet. Currently it's fixed at `$1`, but it can't be more that `0.27%` of the current liquidity (to prevent max-bet setting abuse). That percentage is managed by the `minLiquidityMultiplier` variable.
 
-This is a temporary measure for the current low liquidty. We plan to change it to *infinity* and only use a percentage of current liquidity, but we don't know which should be the proper amount yet.
+This is a temporary measure for the current low liquidity. We plan to change it to *infinity* and only use a percentage of current liquidity, but we don't know which should be the proper amount yet.
 
 ### Bet token
+
+The contract works with any ERC-20 token as a `_bet_token` parameter in the constructor.
+
+The current deployed version uses `DAI`, for which the contract has a special case that allows to use the [permit function](https://github.com/makerdao/developerguides/blob/master/dai/how-to-use-permit-function/how-to-use-permit-function.md#permit). DAI's permit function allows you to spend DAI without the need of an "approval" transaction for the tokens, it uses a signature instead. The signature parameters are available in `rollBets` and `addLiquidity` methods, they also have the version without those parameters, but those are for when you're using tokens that don't have this capability, like USDC or USDT.
+
 ### Liquidity management
+
+
+
 ### Running rolls
 #### Roll redeem
 
