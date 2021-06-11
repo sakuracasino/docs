@@ -301,13 +301,15 @@ function withdrawFees() external onlyOwner {
     </h4>
 </doc-anchor-target>
 <p>There&#x27;s also the concept of a max bet. Currently it&#x27;s fixed at <code v-pre>$1</code>, but it can&#x27;t be more that <code v-pre>0.27%</code> of the current liquidity (to prevent max-bet setting abuse). That percentage is managed by the <code v-pre>minLiquidityMultiplier</code> variable.</p>
-<p>This is a temporary measure for the current low liquidty. We plan to change it to <em>infinity</em> and only use a percentage of current liquidity, but we don&#x27;t know which should be the proper amount yet.</p>
+<p>This is a temporary measure for the current low liquidity. We plan to change it to <em>infinity</em> and only use a percentage of current liquidity, but we don&#x27;t know which should be the proper amount yet.</p>
 <doc-anchor-target id="bet-token">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#bet-token">#</doc-anchor-trigger>
         <span>Bet token</span>
     </h3>
 </doc-anchor-target>
+<p>The contract works with any ERC-20 token as a <code v-pre>_bet_token</code> parameter in the constructor.</p>
+<p>The current deployed version uses <code v-pre>DAI</code>, for which the contract has a special case that allows to use the <a href="https://github.com/makerdao/developerguides/blob/master/dai/how-to-use-permit-function/how-to-use-permit-function.md#permit">permit function</a>. DAI&#x27;s permit function allows you to spend DAI without the need of an &quot;approval&quot; transaction for the tokens, it uses a signature instead. The signature parameters are available in <code v-pre>rollBets</code> and <code v-pre>addLiquidity</code> methods, they also have the version without those parameters, but those are for when you&#x27;re using tokens that don&#x27;t have this capability, like USDC or USDT.</p>
 <doc-anchor-target id="liquidity-management">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#liquidity-management">#</doc-anchor-trigger>
