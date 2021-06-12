@@ -310,42 +310,86 @@ function withdrawFees() external onlyOwner {
 </doc-anchor-target>
 <p>The contract works with any ERC-20 token as a <code v-pre>_bet_token</code> parameter in the constructor.</p>
 <p>The current deployed version uses <code v-pre>DAI</code>, for which the contract has a special case that allows to use the <a href="https://github.com/makerdao/developerguides/blob/master/dai/how-to-use-permit-function/how-to-use-permit-function.md#permit">permit function</a>. DAI&#x27;s permit function allows you to spend DAI without the need of an &quot;approval&quot; transaction for the tokens, it uses a signature instead. The signature parameters are available in <code v-pre>rollBets</code> and <code v-pre>addLiquidity</code> methods, they also have the version without those parameters, but those are for when you&#x27;re using tokens that don&#x27;t have this capability, like USDC or USDT.</p>
+<doc-alert variant="success">
+<template #title>Multiple tokens</template>
+<p>For supporting different tokens we need to deploy one different contract for each bet token. This is a planned feature we have ou our <a href="/roadmap">roadmap</a>.</p>
+</doc-alert>
 <doc-anchor-target id="liquidity-management">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#liquidity-management">#</doc-anchor-trigger>
         <span>Liquidity management</span>
     </h3>
 </doc-anchor-target>
+<doc-anchor-target id="locked-liquidity">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#locked-liquidity">#</doc-anchor-trigger>
+        <span>Locked Liquidity</span>
+    </h4>
+</doc-anchor-target>
+<p>When a user makes a bet, we need to lock some part of the liquidity in case it wins. The user can win at most <code v-pre>x36</code> of the betted amount. We lock that maximum amount the user can win until the roll is resolved. The total liquidity locked at the moment is tracked by the <code v-pre>locked_liquidity</code> variable.</p>
+<doc-anchor-target id="shares-printing">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#shares-printing">#</doc-anchor-trigger>
+        <span>Shares printing</span>
+    </h4>
+</doc-anchor-target>
+<p>Liquidity shares are represented by the <a href="https://kovan.etherscan.io/token/0x4d709c0715c03536c3599ed26b48c2332e69b01a">SV1</a> token. When you provide liquidity, we mint tokens for you and if you withdraw liquidity, we burn them.</p>
+<p>For calculating liquidity take these into account:</p>
+<p>For the first deposit, we mint <code v-pre>BASE_SHARES</code> per each deposited <em>token satoshi</em> (10^10 per each satoshi).
+Then, we print <code v-pre>current_shares / (current_liquidity + locked_liquidity)</code> per each deposited <em>token satoshi</em>. <code v-pre>current_shares</code> is the circulating supply of SV1. <code v-pre>current_liquidity + locked_liquidity</code> is the amount of the bet token that is currently deposited.</p>
+<p>To prevent problems for not having floating-point, the formula for how many shares need to be printed is <code v-pre>(added_liquidity * current_shares) / (current_liquidity + locked_liquidity)</code>.</p>
 <doc-anchor-target id="running-rolls">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#running-rolls">#</doc-anchor-trigger>
         <span>Running rolls</span>
     </h3>
 </doc-anchor-target>
+<p>The function <code v-pre>rollBets</code> is the function that you need to call to run your bets. It will do the following:</p>
+<ol>
+<li>Check that the total amount of your bets stays whithin the bet limits</li>
+<li>Collect your bet tokens along with the fee</li>
+<li>Lock the max amount you can win from the withdrawable liquidity</li>
+<li>Request <em>Chainlink VRF</em> for a random number</li>
+<li>Save your bet data and requestId.</li>
+</ol>
+<p>That&#x27;s it for the rollRequest transaction. Later, when the <em>VRFCoordinator</em> responds, it will call the <code v-pre>fulfillRandomness</code> function, there:</p>
+<ol start="6">
+<li>Check that resquest is not already resolved</li>
+<li>Unlocks the locked amount, closes the request id</li>
+<li>Computes the total amount you receive from the roll</li>
+<li>If needed, it sends you won your amount</li>
+</ol>
 <doc-anchor-target id="roll-redeem">
     <h4>
         <doc-anchor-trigger class="header-anchor-trigger" to="#roll-redeem">#</doc-anchor-trigger>
         <span>Roll redeem</span>
     </h4>
 </doc-anchor-target>
+<p>There&#x27;s a <code v-pre>redeem</code> function for the almost impossible case that <em>Chainlink&#x27;s VRF</em> doesn&#x27;t respond within two hours. You can redeem the amount you have bet in that request. <em>Ideally, this function should never be used.</em></p>
 <doc-anchor-target id="testing-environment">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#testing-environment">#</doc-anchor-trigger>
         <span>Testing environment</span>
     </h2>
 </doc-anchor-target>
-<doc-anchor-target id="npm-package">
+<p>You can run <code v-pre>make test</code> for running all the tests. We use the truffle test runner but you need to have both a running local gananche (<code v-pre>make run</code>) and no <code v-pre>vrfsigner</code> active.</p>
+<doc-alert variant="primary">
+<template #title>.mnemonic</template>
+<p>There&#x27;s a <code v-pre>.mnemonic</code> file with the mnemonic used for the ganache wallets and the tests. You can change this mnemonic if you want for your custom one.</p>
+</doc-alert>
+<p>Test are done in <em>JavaScript</em> instead of <em>Solidity</em>. There&#x27;s only one test file, <code v-pre>roulette.test.js</code> with all the tests for the Roulette contract.</p>
+<p><strong>Test libs</strong> are in the <code v-pre>test/libs/</code> folder. They contain all the <em>permit logic</em>, <em>bignumber math</em> and <em>wallet logic</em>.</p>
+<p>As a general rule, the test file should only use <code v-pre>daiMockInteractor</code> and <code v-pre>rouletteInteractor</code> for interacting with the contract.</p>
+<p>Feel free to add any test you want and make a Pull Request on github. The more tests we have the better.</p>
+<doc-anchor-target id="npm-package-and-ui">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#npm-package">#</doc-anchor-trigger>
-        <span>NPM package</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#npm-package-and-ui">#</doc-anchor-trigger>
+        <span>NPM package and UI</span>
     </h2>
 </doc-anchor-target>
-<doc-anchor-target id="linking-it-with-the-ui">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#linking-it-with-the-ui">#</doc-anchor-trigger>
-        <span>Linking it with the UI</span>
-    </h3>
-</doc-anchor-target>
+<p>The github&#x27;s contract repository is associated with a <a href="https://www.npmjs.com/package/@sakuracasino/roulette-contract">npm package</a>.</p>
+<p>The npm package uses data from <code v-pre>networks.js</code> and exposes the contract&#x27;s <code v-pre>ABI</code> to be used for the frotnend</p>
+<p>For connecting the contract to an UI, simply install that npm package in your node environment.</p>
 
 
 
