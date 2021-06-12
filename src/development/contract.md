@@ -122,13 +122,73 @@ The contract works with any ERC-20 token as a `_bet_token` parameter in the cons
 
 The current deployed version uses `DAI`, for which the contract has a special case that allows to use the [permit function](https://github.com/makerdao/developerguides/blob/master/dai/how-to-use-permit-function/how-to-use-permit-function.md#permit). DAI's permit function allows you to spend DAI without the need of an "approval" transaction for the tokens, it uses a signature instead. The signature parameters are available in `rollBets` and `addLiquidity` methods, they also have the version without those parameters, but those are for when you're using tokens that don't have this capability, like USDC or USDT.
 
+!!!success Multiple tokens
+
+For supporting different tokens we need to deploy one different contract for each bet token. This is a planned feature we have ou our [roadmap](/roadmap).
+
+!!!
+
 ### Liquidity management
 
+#### Locked Liquidity
 
+When a user makes a bet, we need to lock some part of the liquidity in case it wins. The user can win at most `x36` of the betted amount. We lock that maximum amount the user can win until the roll is resolved. The total liquidity locked at the moment is tracked by the `locked_liquidity` variable.
+
+#### Shares printing
+
+Liquidity shares are represented by the [SV1](https://kovan.etherscan.io/token/0x4d709c0715c03536c3599ed26b48c2332e69b01a) token. When you provide liquidity, we mint tokens for you and if you withdraw liquidity, we burn them.
+
+For calculating liquidity take these into account:
+
+For the first deposit, we mint `BASE_SHARES` per each deposited *token satoshi* (10^10 per each satoshi).
+Then, we print `current_shares / (current_liquidity + locked_liquidity)` per each deposited *token satoshi*. `current_shares` is the circulating supply of SV1. `current_liquidity + locked_liquidity` is the amount of the bet token that is currently deposited.
+
+To prevent problems for not having floating-point, the formula for how many shares need to be printed is `(added_liquidity * current_shares) / (current_liquidity + locked_liquidity)`.
 
 ### Running rolls
+
+The function `rollBets` is the function that you need to call to run your bets. It will do the following:
+
+1. Check that the total amount of your bets stays whithin the bet limits
+2. Collect your bet tokens along with the fee
+3. Lock the max amount you can win from the withdrawable liquidity
+4. Request *Chainlink VRF* for a random number
+5. Save your bet data and requestId.
+
+That's it for the rollRequest transaction. Later, when the *VRFCoordinator* responds, it will call the `fulfillRandomness` function, there:
+
+6. Check that resquest is not already resolved
+7. Unlocks the locked amount, closes the request id
+8. Computes the total amount you receive from the roll
+9. If needed, it sends you won your amount
+
 #### Roll redeem
 
+There's a `redeem` function for the almost impossible case that *Chainlink's VRF* doesn't respond within two hours. You can redeem the amount you have bet in that request. *Ideally, this function should never be used.*
+
 ## Testing environment
-## NPM package
-### Linking it with the UI
+
+You can run `make test` for running all the tests. We use the truffle test runner but you need to have both a running local gananche (`make run`) and no `vrfsigner` active.
+
+!!! .mnemonic
+
+There's a `.mnemonic` file with the mnemonic used for the ganache wallets and the tests. You can change this mnemonic if you want for your custom one.
+
+!!!
+
+Test are done in *JavaScript* instead of *Solidity*. There's only one test file, `roulette.test.js` with all the tests for the Roulette contract.
+
+
+**Test libs** are in the `test/libs/` folder. They contain all the *permit logic*, *bignumber math* and *wallet logic*.
+
+As a general rule, the test file should only use `daiMockInteractor` and `rouletteInteractor` for interacting with the contract.
+
+Feel free to add any test you want and make a Pull Request on github. The more tests we have the better. 
+
+## NPM package and UI
+
+The github's contract repository is associated with a [npm package](https://www.npmjs.com/package/@sakuracasino/roulette-contract).
+
+The npm package uses data from `networks.js` and exposes the contract's `ABI` to be used for the frotnend
+
+For connecting the contract to an UI, simply install that npm package in your node environment.
