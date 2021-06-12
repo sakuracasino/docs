@@ -37,6 +37,8 @@ There are a few reasons for this update:
 
 ### Mutiple bet tokens
 
+The contract allows for any type of ERC-20 token as a bet token. The problem is that you can only chose one on the contract's contruction. What we can do is to create a different contract instance for each token; then, we will need to update the UI to switch between contracts.
+
 ## Multiple games scaling
 ### Sakura Casino token
 ### Governance and airdrops
