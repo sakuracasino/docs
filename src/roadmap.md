@@ -40,7 +40,13 @@ There are a few reasons for this update:
 The contract allows for any type of ERC-20 token as a bet token. The problem is that you can only chose one on the contract's contruction. What we can do is to create a different contract instance for each token; then, we will need to update the UI to switch between contracts.
 
 ## Multiple games scaling
+
+We want to expand our casino platform to more games, not only roulette. I think we can divide tham in two areas: simpler random games (like slot machines, blackjack, dice) and with multiple users like poker.
+
 ### Sakura Casino token
+
+For having multiple games, we might want to consider having a single token for all of them.
+
 ### Governance and airdrops
 ### Shared random
 ### Multiple user games
