@@ -5,18 +5,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="turbo-cache-control" content="no-cache">
 
+    <!-- Primary Meta Tags -->
     <title>Contract Development | SakuraCasino Documentation</title>
+    <meta name="title" content="Contract Development | SakuraCasino Documentation">
+    <meta name="description" content="The contract's repository is built using truffle and ganache." />
 
-    <meta name="description" content="The contract&#39;s repository is built using truffle and ganache." />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/development/contract/">
+    <meta property="og:title" content="Contract Development | SakuraCasino Documentation">
+    <meta property="og:description" content="The contract's repository is built using truffle and ganache.">
 
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="/development/contract/">
+    <meta property="twitter:title" content="Contract Development | SakuraCasino Documentation">
+    <meta property="twitter:description" content="The contract's repository is built using truffle and ganache.">
+    
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/assets/sakura-icon.svg" rel="icon" />
     <link href="/resources/css/retype.css" rel="stylesheet" />
 
     <script type="text/javascript" src="/resources/js/config.js" defer></script>
-    <script type="text/javascript" src="/resources/js/prism.js" defer></script>
     <script type="text/javascript" src="/resources/js/retype.js" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -120,7 +133,7 @@
         <a
     class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in"
     target="_blank"
-    href="https://retype.com"
+    href="https://retype.com/"
     rel="noopener"
 >
     <span class="text-xs whitespace-nowrap">Powered by</span>
@@ -156,7 +169,7 @@
             <a
     class="flex items-center justify-center flex-nowrap h-16 text-gray-400 dark:text-dark-400 hover:text-gray-700 dark:hover:text-dark-300 transition-colors duration-150 ease-in"
     target="_blank"
-    href="https://retype.com"
+    href="https://retype.com/"
     rel="noopener"
 >
     <span class="text-xs whitespace-nowrap">Powered by</span>
@@ -186,7 +199,7 @@
 </doc-anchor-target>
 <p>The <a href="https://github.com/sakuracasino/roulette-contract">contract&#x27;s repository</a> is built using <a href="https://www.trufflesuite.com/">truffle</a> and <a href="https://www.trufflesuite.com/ganache">ganache</a>.</p>
 <p>You don&#x27;t need to install any of these globally, they&#x27;re implemented as <em><code v-pre>npm</code> dependencies</em> of the projects.</p>
-<p>To get started, follow the instructions in the <code v-pre>README</code> to run the project:
+<p>To get started, follow the instructions in the <code v-pre>README</code> to run the project:<br />
 <a href="https://github.com/sakuracasino/roulette-contract#running-the-project">https://github.com/sakuracasino/roulette-contract#running-the-project</a></p>
 <p>Remember that you have to run <code v-pre>make migrate</code> and <code v-pre>make vrfsigner</code> to have it completely working</p>
 <doc-alert variant="primary">
@@ -312,7 +325,7 @@ function withdrawFees() external onlyOwner {
 <p>The current deployed version uses <code v-pre>DAI</code>, for which the contract has a special case that allows to use the <a href="https://github.com/makerdao/developerguides/blob/master/dai/how-to-use-permit-function/how-to-use-permit-function.md#permit">permit function</a>. DAI&#x27;s permit function allows you to spend DAI without the need of an &quot;approval&quot; transaction for the tokens, it uses a signature instead. The signature parameters are available in <code v-pre>rollBets</code> and <code v-pre>addLiquidity</code> methods, they also have the version without those parameters, but those are for when you&#x27;re using tokens that don&#x27;t have this capability, like USDC or USDT.</p>
 <doc-alert variant="success">
 <template #title>Multiple tokens</template>
-<p>For supporting different tokens we need to deploy one different contract for each bet token. This is a planned feature we have ou our <a href="/roadmap">roadmap</a>.</p>
+<p>For supporting different tokens we need to deploy one different contract for each bet token. This is a planned feature we have ou our <a href="/roadmap/">roadmap</a>.</p>
 </doc-alert>
 <doc-anchor-target id="liquidity-management">
     <h3>
@@ -335,7 +348,7 @@ function withdrawFees() external onlyOwner {
 </doc-anchor-target>
 <p>Liquidity shares are represented by the <a href="https://kovan.etherscan.io/token/0x4d709c0715c03536c3599ed26b48c2332e69b01a">SV1</a> token. When you provide liquidity, we mint tokens for you and if you withdraw liquidity, we burn them.</p>
 <p>For calculating liquidity take these into account:</p>
-<p>For the first deposit, we mint <code v-pre>BASE_SHARES</code> per each deposited <em>token satoshi</em> (10^10 per each satoshi).
+<p>For the first deposit, we mint <code v-pre>BASE_SHARES</code> per each deposited <em>token satoshi</em> (10^10 per each satoshi).<br />
 Then, we print <code v-pre>current_shares / (current_liquidity + locked_liquidity)</code> per each deposited <em>token satoshi</em>. <code v-pre>current_shares</code> is the circulating supply of SV1. <code v-pre>current_liquidity + locked_liquidity</code> is the amount of the bet token that is currently deposited.</p>
 <p>To prevent problems for not having floating-point, the formula for how many shares need to be printed is <code v-pre>(added_liquidity * current_shares) / (current_liquidity + locked_liquidity)</code>.</p>
 <doc-anchor-target id="running-rolls">
@@ -401,7 +414,7 @@ Then, we print <code v-pre>current_shares / (current_liquidity + locked_liquidit
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/development/getting-started">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/development/getting-started/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
@@ -411,7 +424,7 @@ Then, we print <code v-pre>current_shares / (current_liquidity + locked_liquidit
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/development/ui">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/development/ui/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
                 <span class="block mt-1">UI Development</span>
@@ -462,6 +475,6 @@ Then, we print <code v-pre>current_shares / (current_liquidity + locked_liquidit
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Contract Development", icon: "file" }</script>
+        <script>window.__DOCS__ = { "title": "Contract Development", icon: "file", hasPrism: true, hasMermaid: false }</script>
     </body>
 </html>
