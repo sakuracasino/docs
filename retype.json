@@ -26,8 +26,12 @@
         "link": "https://discord.gg/DHux5uEvrJ"
     }
   ],
-  "footer":
-  {
+  "footer": {
     "copyright": "&copy; Copyright {{ year }}. [Sakura Casino](https://sakura.casino) All rights reserved."
+  },
+  "plugins": {
+    "googleAnalytics": {
+      "id": "G-K80RM9Z2K3"
+    }
   }
 }
