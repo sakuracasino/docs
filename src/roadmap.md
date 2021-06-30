@@ -48,5 +48,8 @@ We want to expand our casino platform to more games, not only roulette. I think 
 For having multiple games, we might want to consider having a single token for all of them.
 
 ### Governance and airdrops
+*To be completed*
 ### Shared random
+*To be completed*
 ### Multiple user games
+*To be completed*
