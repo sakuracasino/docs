@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "retypeapp": "^1.5.0"
+    "retypeapp": "1.7.0"
   }
 }

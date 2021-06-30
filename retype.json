@@ -4,7 +4,6 @@
   "favicon": "assets/sakura-icon.svg",
   "branding":
   {
-    "title": "Sakura Casino",
     "label": "Docs",
     "logo": "assets/logo.png",
     "logoDark": "assets/logo-dark.png"
@@ -25,7 +24,7 @@
   "footer": {
     "copyright": "&copy; Copyright {{ year }}. [Sakura Casino](https://sakura.casino) All rights reserved."
   },
-  "plugins": {
+  "integrations": {
     "googleAnalytics": {
       "id": "G-K80RM9Z2K3"
     }
